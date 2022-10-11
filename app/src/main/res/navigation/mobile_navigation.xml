@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_focus">
+
+    <fragment
+        android:id="@+id/nav_focus"
+        android:name="com.example.afinal.ui.focus.FocusFragment"
+        android:label="@string/focus"
+        tools:layout="@layout/fragment_focus" />
+    <fragment
+        android:id="@+id/nav_timeLine"
+        android:name="com.example.afinal.ui.timeline.TimeFragment"
+        android:label="@string/timeLine"
+        tools:layout="@layout/fragment_timeline" />
+
+    <fragment
+        android:id="@+id/nav_store"
+        android:name="com.example.afinal.ui.store.StoreFragment"
+        android:label="@string/store"
+        tools:layout="@layout/fragment_store" />
+
+    <fragment
+        android:id="@+id/nav_setting"
+        android:name="com.example.afinal.ui.setting.SettingFragment"
+        android:label="@string/setting"
+        tools:layout="@layout/fragment_setting" />
+</navigation>

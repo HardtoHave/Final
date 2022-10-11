@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.focus.FocusFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="UselessParent">
+
+        <TextView
+            android:id="@+id/hintText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="90dp"
+            android:layout_marginTop="50dp"
+            android:gravity="center_horizontal"
+            android:text="@string/start_hint"
+            android:textColor="#4E342E"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/base"
+            android:layout_width="400dp"
+            android:layout_height="450dp"
+            android:layout_marginTop="50dp"
+            android:contentDescription="Base"
+            android:scaleType="centerInside"
+            android:scaleX="0.7"
+            android:scaleY="0.7"
+            android:src="@drawable/base" />
+        <com.example.afinal.ui.focus.ProcessBar
+            android:id="@+id/process_bar"
+            android:layout_width="400dp"
+            android:layout_height="450dp"
+            android:layout_centerInParent="false"
+            app:circleBackGround="@color/lightYellow"
+            android:layout_marginTop="50dp"
+            app:pointRadius="4dp"
+            app:pointWidth="2dp"
+            android:scaleX="1.2"
+            android:scaleY="1.2"
+            app:roundColor="@color/darkYellow"
+            app:roundProgressColor="?attr/colorPrimary"
+            app:roundWidth="10dip"
+            app:textColor="#AAFFFFFF"
+            app:textSize="50sp"/>
+        <ImageView
+            android:id="@+id/tree"
+            android:layout_width="400dp"
+            android:layout_height="500dp"
+            android:layout_alignBottom="@+id/base"
+            android:layout_marginBottom="20dp"
+            android:scaleType="centerInside"
+            android:scaleX="0.5"
+            android:scaleY="0.5"
+            android:src="@drawable/book_dialog" />
+
+        <TextView
+            android:id="@+id/timeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="100dp"
+            android:text="120:00"
+            android:textColor="#6D4C41"
+            android:textSize="50sp"
+            android:typeface="serif" />
+
+
+        <Button
+            android:id="@+id/startButton"
+            android:layout_width="120dp"
+            android:layout_height="48dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="50dp"
+            android:background="@drawable/start_button"
+            android:text="@string/start"
+            android:textColor="@color/dark_background"
+            android:textAllCaps="false"/>
+
+        <Button
+            android:id="@+id/cancelButton"
+            android:layout_width="100dp"
+            android:layout_height="48dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/end_button"
+            android:text="@string/cancel"
+            android:textColor="#111111"
+            android:textAllCaps="false"
+            android:visibility="gone"/>
+    </RelativeLayout>
+
+</FrameLayout>
