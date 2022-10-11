@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-import com.example.afinal.MainActivity;
+import com.example.afinal.activity.MainActivity;
 
 public class notificationBroadcastReceiver extends BroadcastReceiver {
     @Override

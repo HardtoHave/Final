@@ -1,9 +1,13 @@
 package com.example.afinal.ui.focus;
 
+import com.example.afinal.activity.MainActivity;
 import com.example.afinal.R;
+import com.example.afinal.db.DBUser;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -43,31 +47,31 @@ public class ChooseDialog extends Dialog {
         kabi.setVisibility(View.GONE);
         koala.setVisibility(View.GONE);
         wukong.setVisibility(View.GONE);
-//        DBUser dbHelper= (DBUser) DBUser.getInstance(getContext());
-//        SQLiteDatabase db = dbHelper.getWritableDatabase();
-//        String[] projection={"decoration"};
-//        String selection="isEquip";
-//        String[] selectionArgs={String.valueOf(true)};
-//        Cursor cursor=db.query("theme",projection,selection,selectionArgs,null,null,null);
-//        while (cursor.moveToNext()){
-//            for (int i = 0; i < 4; i++) {
-//                String name=cursor.getString(i);
-//                switch (name){
-//                    case "mario":
-//                        mario.setVisibility(View.VISIBLE);
-//                        break;
-//                    case "kabi":
-//                        kabi.setVisibility(View.VISIBLE);
-//                        break;
-//                    case "koala":
-//                        koala.setVisibility(View.VISIBLE);
-//                        break;
-//                    case "wukong":
-//                        wukong.setVisibility(View.VISIBLE);
-//                        break;
-//                }
-//            }
-//        }
+        DBUser dbHelper= (DBUser) DBUser.getInstance(getContext());
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String[] projection={"decoration"};
+        String selection="isEquip";
+        String[] selectionArgs={String.valueOf(true)};
+        Cursor cursor=db.query("theme",projection,selection,selectionArgs,null,null,null);
+        while (cursor.moveToNext()){
+            for (int i = 0; i < 4; i++) {
+                String name=cursor.getString(i);
+                switch (name){
+                    case "mario":
+                        mario.setVisibility(View.VISIBLE);
+                        break;
+                    case "kabi":
+                        kabi.setVisibility(View.VISIBLE);
+                        break;
+                    case "koala":
+                        koala.setVisibility(View.VISIBLE);
+                        break;
+                    case "wukong":
+                        wukong.setVisibility(View.VISIBLE);
+                        break;
+                }
+            }
+        }
         initClick();
     }
 

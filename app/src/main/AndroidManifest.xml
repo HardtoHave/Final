@@ -13,15 +13,32 @@
         android:theme="@style/Theme.Final"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.Final.NoActionBar">
+            android:name=".activity.ChangeEmailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.ChangePhoneActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.ChangePasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.RegisterActivity"
+            android:exported="false" >
+        </activity>
+        <activity
+            android:name=".activity.LoginActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.MainActivity"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Final.NoActionBar">
 
             <meta-data
                 android:name="android.app.lib_name"

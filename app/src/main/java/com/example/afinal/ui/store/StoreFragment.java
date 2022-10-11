@@ -3,6 +3,7 @@ package com.example.afinal.ui.store;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +15,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.afinal.activity.MainActivity;
 import com.example.afinal.R;
+import com.example.afinal.db.DBUser;
+import com.example.afinal.ui.focus.ChooseDialog;
 import com.example.afinal.ui.focus.FocusFragment;
 
 
@@ -22,13 +26,15 @@ public class StoreFragment extends Fragment {
 
     private Button mario, kabi, koala, wukong;
     private int m_coinNum;
-    public String decoration="book";
+    private final DBUser dbHelper= (DBUser) DBUser.getInstance(getContext());
+
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         return inflater.inflate(R.layout.fragment_store, container,false);
     }
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState){
+        ChooseDialog chooseDialog=new ChooseDialog(requireActivity());
         super.onViewCreated(view, savedInstanceState);
         mario=view.findViewById(R.id.mario);
         kabi=view.findViewById(R.id.kabi);
@@ -36,7 +42,7 @@ public class StoreFragment extends Fragment {
         wukong=view.findViewById(R.id.wukong);
         SharedPreferences preferences = requireActivity().getSharedPreferences("user", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
-//        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
         m_coinNum = preferences.getInt("coinSum",0);
 
         mario.setOnClickListener(v -> {
@@ -46,7 +52,10 @@ public class StoreFragment extends Fragment {
                 editor.apply();
                 mario.setText(R.string.equip);
                 FocusFragment.passDataInterface.passData(m_coinNum+"");
-                decoration="mario";
+                ContentValues values=new ContentValues();
+                values.put("decoration","mario");
+                values.put("isEquip",true);
+                db.insert("theme",null,values);
                 Toast.makeText(requireActivity(), "charge success ٩( 'ω' )و ", Toast.LENGTH_SHORT).show();
             }else {
                 Toast.makeText(requireActivity(), "Your coins not enough (○ﾟεﾟ○)", Toast.LENGTH_SHORT).show();
@@ -62,7 +71,7 @@ public class StoreFragment extends Fragment {
                 ContentValues values=new ContentValues();
                 values.put("decoration","kabi");
                 values.put("isEquip",true);
-                //db.insert("theme",null,values);
+                db.insert("theme",null,values);
                 Toast.makeText(requireActivity(), "charge success ٩( 'ω' )و ", Toast.LENGTH_SHORT).show();
             }else {
                 Toast.makeText(requireActivity(), "Your coins not enough (○ﾟεﾟ○)", Toast.LENGTH_SHORT).show();
@@ -78,7 +87,7 @@ public class StoreFragment extends Fragment {
                 ContentValues values=new ContentValues();
                 values.put("decoration","koala");
                 values.put("isEquip",true);
-                //db.insert("theme",null,values);
+                db.insert("theme",null,values);
                 Toast.makeText(requireActivity(), "charge success ٩( 'ω' )و ", Toast.LENGTH_SHORT).show();
             }else {
                 Toast.makeText(requireActivity(), "Your coins not enough (○ﾟεﾟ○)", Toast.LENGTH_SHORT).show();
@@ -94,11 +103,13 @@ public class StoreFragment extends Fragment {
                 ContentValues values=new ContentValues();
                 values.put("decoration","wukong");
                 values.put("isEquip",true);
-                //db.insert("theme",null,values);
+                db.insert("theme",null,values);
                 Toast.makeText(requireActivity(), "charge success ٩( 'ω' )و ", Toast.LENGTH_SHORT).show();
             }else {
                 Toast.makeText(requireActivity(), "Your coins not enough (○ﾟεﾟ○)", Toast.LENGTH_SHORT).show();
             }
         });
     }
+
+
 }
