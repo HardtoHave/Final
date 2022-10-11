@@ -16,4 +16,8 @@
     <color name="lightBackground">#48c9b0</color>
     <color name="lightYellow">#fff9c4</color>
     <color name="darkYellow">#afb42b</color>
+    <color name="login_button">#89CFF0</color>
+    <color name="blue_grotto">#189AB4</color>
+    <color name="blue_green">#75E6DA</color>
+    <color name="baby_blue">#D4F1F4</color>
 </resources>

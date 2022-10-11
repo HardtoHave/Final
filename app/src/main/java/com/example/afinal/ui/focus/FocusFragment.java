@@ -15,6 +15,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.BitmapFactory;
 import android.os.Build;
@@ -38,8 +39,8 @@ import android.widget.Toast;
 import com.example.afinal.R;
 import com.example.afinal.db.DBContract;
 import com.example.afinal.db.DBHelper;
+import com.example.afinal.db.DBUser;
 import com.example.afinal.service.notificationBroadcastReceiver;
-import com.example.afinal.ui.store.StoreFragment;
 import com.example.afinal.utility.DateFormatUtils;
 
 import java.util.Calendar;
@@ -101,6 +102,7 @@ public class FocusFragment extends Fragment {
     @SuppressLint("SetTextI18n")
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
+
         //create notification which required min API26
         if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.O){
             //notification channel
@@ -151,32 +153,42 @@ public class FocusFragment extends Fragment {
         SharedPreferences preferences = requireActivity().getSharedPreferences("user", Context.MODE_PRIVATE);
         m_coinNum = preferences.getInt("coinSum",0);
         passDataInterface.passData(m_coinNum+"");
+        DBUser dbUser= (DBUser) DBUser.getInstance(getActivity());
+        SQLiteDatabase db = dbUser.getReadableDatabase();
+        String selection="isEquip=?";
+        String[] projection={"decoration"};
+        String[] selectionArgs= new String[]{"true"};
+        Cursor cursor=db.query("theme",projection,selection,selectionArgs,null,null,null);
+        String dec=null;
+        while(cursor.moveToNext()){
+            dec=cursor.getString(0);
+        }
     }
     private void initListener(){
-//        mBase.setOnClickListener(view -> {
-//            mChooseDialog=new ChooseDialog(getActivity());
-//            mChooseDialog.setMarioOnClickListener(() -> {
-//                choose="mario";
-//                mChooseDialog.dismiss();
-//                update(choose, progress);
-//            });
-//            mChooseDialog.setKabiOnClickListener(() -> {
-//                choose = "kabi";
-//                mChooseDialog.dismiss();
-//                update(choose, progress);
-//            });
-//            mChooseDialog.setKoalaOnClickListener(() -> {
-//                choose = "koala";
-//                mChooseDialog.dismiss();
-//                update(choose, progress);
-//            });
-//            mChooseDialog.setWukongClickListener(() -> {
-//                choose = "wukong";
-//                mChooseDialog.dismiss();
-//                update(choose, progress);
-//            });
-//            mChooseDialog.show();
-//        });
+        mBase.setOnClickListener(view -> {
+            mChooseDialog=new ChooseDialog(getActivity());
+            mChooseDialog.setMarioOnClickListener(() -> {
+                choose="mario";
+                mChooseDialog.dismiss();
+                update(choose, progress);
+            });
+            mChooseDialog.setKabiOnClickListener(() -> {
+                choose = "kabi";
+                mChooseDialog.dismiss();
+                update(choose, progress);
+            });
+            mChooseDialog.setKoalaOnClickListener(() -> {
+                choose = "koala";
+                mChooseDialog.dismiss();
+                update(choose, progress);
+            });
+            mChooseDialog.setWukongClickListener(() -> {
+                choose = "wukong";
+                mChooseDialog.dismiss();
+                update(choose, progress);
+            });
+            mChooseDialog.show();
+        });
         mProcessBar.setProgressCallback(_progress -> {
             progress = _progress;
             update(choose, progress);

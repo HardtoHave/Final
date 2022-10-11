@@ -1,24 +1,20 @@
-package com.example.afinal;
+package com.example.afinal.activity;
 
-import android.app.FragmentTransaction;
 import android.os.Bundle;
-import android.view.View;
 import android.view.Menu;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.afinal.ui.focus.FocusFragment;
-import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.navigation.NavigationView;
-
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.afinal.R;
 import com.example.afinal.databinding.ActivityMainBinding;
+import com.example.afinal.ui.focus.FocusFragment;
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.Objects;
 

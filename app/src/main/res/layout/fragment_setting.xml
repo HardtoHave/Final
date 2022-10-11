@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.setting.SettingFragment">
+    tools:context=".ui.setting.SettingFragment"
+    android:background="@color/mainBackground">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -28,7 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="@string/FAQ"
+            android:text="常见问题"
             android:textSize="15dp"
             android:textColor="#868888"/>
 
@@ -50,7 +51,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Rate US 5 Stars"
+                android:text="基本知识"
                 android:textSize="15dp"
                 android:textColor="#868888"/>
         </LinearLayout>
@@ -73,12 +74,10 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/privacy_policy"
+                android:text="隐私信息"
                 android:textSize="15dp"
                 android:textColor="#868888"/>
         </LinearLayout>
-
-
 
         <View
             android:layout_width="match_parent"
@@ -87,6 +86,15 @@
             android:layout_marginRight="10dp"
             android:background="#E8EDED"
             android:layout_height="0.5dp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="#E8EDED"
+            android:layout_height="0.5dp"/>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -97,7 +105,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/sync"
+                android:text="应用版本"
                 android:textSize="15dp"
                 android:textColor="#868888"/>
             <TextView
@@ -111,6 +119,17 @@
                 android:textColor="#868888"/>
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="0dp"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
 
 
     </LinearLayout>
