@@ -20,7 +20,45 @@
     <string name="cancel">Cancel</string>
     <string name="permission_dialog">In order to run this application, please turn on the permission in Settings</string>
     <string name="choose_theme">choose your theme</string>
-    <string name="FAQ">FAQ and Support</string>
-    <string name="privacy_policy">Privacy Policy</string>
-    <string name="sync">Sync</string>
+
+    <!-- Register -->
+    <string name="account">account</string>
+    <string name="please_input_your_account">&#32;please input account</string>
+    <string name="login">Login</string>
+    <string name="forget_password">forget password</string>
+    <string name="password">password</string>
+    <string name="please_input_password">&#32;please input password</string>
+    <string name="go_to_register">go to register</string>
+    <string name="third_method_login"> third method login</string>
+    <string name="if_login_is_meaning_to_agree">by signing up you agree to&#160;</string>
+    <string name="the_service">&#32;our terms data policy</string>
+    <string name="iv_project_icon">iv_project_icon</string>
+    <string name="tv_register">user register</string>
+    <string name="tv_phone">phone</string>
+    <string name="et_phone">please input phone</string>
+    <string name="bt_get_code">get code</string>
+    <string name="tv_code">code</string>
+    <string name="et_code">please input code</string>
+    <string name="tv_name">name</string>
+    <string name="et_name">please input name</string>
+    <string name="tv_gender">email</string>
+    <string name="et_gender">please input email</string>
+    <string name="tv_age">age</string>
+    <string name="et_age">please input age</string>
+    <string name="tv_password">password</string>
+    <string name="et_password">please input password</string>
+    <string name="et_password2">please input password again</string>
+    <string name="bt_register">submit</string>
+    <string name="bt_change_password">Change Password</string>
+    <string name="bt_change_phone">Change Phone</string>
+    <string name="bt_change_email">Change Email</string>
+    <string name="title_activity_change_password">ChangePasswordActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 </resources>

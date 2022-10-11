@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.focus.FocusFragment">
+    tools:context=".ui.focus.FocusFragment"
+    android:background="@color/mainBackground">
 
     <!-- TODO: Update blank fragment layout -->
     <RelativeLayout
@@ -49,20 +50,20 @@
             android:scaleX="1.2"
             android:scaleY="1.2"
             app:roundColor="@color/darkYellow"
-            app:roundProgressColor="?attr/colorPrimary"
+            app:roundProgressColor="@color/lightGreen"
             app:roundWidth="10dip"
             app:textColor="#AAFFFFFF"
             app:textSize="50sp"/>
-        <ImageView
-            android:id="@+id/tree"
-            android:layout_width="400dp"
-            android:layout_height="500dp"
-            android:layout_alignBottom="@+id/base"
-            android:layout_marginBottom="20dp"
-            android:scaleType="centerInside"
-            android:scaleX="0.5"
-            android:scaleY="0.5"
-            android:src="@drawable/book_dialog" />
+<!--        <ImageView-->
+<!--            android:id="@+id/tree"-->
+<!--            android:layout_width="400dp"-->
+<!--            android:layout_height="500dp"-->
+<!--            android:layout_alignBottom="@+id/base"-->
+<!--            android:layout_marginBottom="20dp"-->
+<!--            android:scaleType="center"-->
+<!--            android:scaleX="0.5"-->
+<!--            android:scaleY="0.5"-->
+<!--            android:src="@drawable/starburst7" />-->
 
         <TextView
             android:id="@+id/timeText"
