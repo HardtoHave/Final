@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.store.StoreFragment"
-    android:background="?attr/colorPrimary">
+    tools:context=".ui.store.StoreFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -33,12 +32,12 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
                     android:src="@drawable/mario"
-                    android:contentDescription="mario"/>
+                    android:contentDescription="@string/mario"/>
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="$2000"
+                    android:text="@string/M2000"
                     android:textColorHint="#303F9F"
                     android:layout_gravity="center"
                     android:id="@+id/mario"/>
@@ -59,12 +58,12 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="10dp"
                     android:src="@drawable/kabi"
-                    android:contentDescription="mario"/>
+                    android:contentDescription="@string/kabi"/>
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="$2000"
+                    android:text="@string/M2000"
                     android:textColorHint="#303F9F"
                     android:layout_gravity="center"
                     android:id="@+id/kabi"/>
@@ -88,12 +87,12 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
                     android:src="@drawable/koala"
-                    android:contentDescription="koala"/>
+                    android:contentDescription="@string/koala"/>
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="$2000"
+                    android:text="@string/M2000"
                     android:textColorHint="#303F9F"
                     android:layout_gravity="center"
                     android:id="@+id/koala"/>
@@ -114,12 +113,12 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="10dp"
                     android:src="@drawable/goku"
-                    android:contentDescription="wukong"/>
+                    android:contentDescription="@string/wukong"/>
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="$2000"
+                    android:text="@string/M2000"
                     android:textColorHint="#303F9F"
                     android:layout_gravity="center"
                     android:id="@+id/wukong"/>

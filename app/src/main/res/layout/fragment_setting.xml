@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.setting.SettingFragment"
-    android:background="@color/mainBackground">
+    tools:context=".ui.setting.SettingFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,20 +16,15 @@
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="10dp" />
+        app:layout_constraintTop_toTopOf="parent"
+        >
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="常见问题"
-            android:textSize="15dp"
+            android:layout_marginStart="10dp"
+            android:text="@string/question"
+            android:textSize="15sp"
             android:textColor="#868888"/>
 
         <View
@@ -46,13 +40,13 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp">
+            android:layout_marginStart="10dp">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="基本知识"
-                android:textSize="15dp"
+                android:text="@string/rate"
+                android:textSize="15sp"
                 android:textColor="#868888"/>
         </LinearLayout>
 
@@ -69,13 +63,13 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp">
+            android:layout_marginStart="10dp">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="隐私信息"
-                android:textSize="15dp"
+                android:text="@string/privacy"
+                android:textSize="15sp"
                 android:textColor="#868888"/>
         </LinearLayout>
 
@@ -100,23 +94,23 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp">
+            android:layout_marginStart="10dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="应用版本"
-                android:textSize="15dp"
+                android:text="@string/sync"
+                android:textSize="15sp"
                 android:textColor="#868888"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="190dp"
+                android:layout_marginStart="190dp"
                 android:text="26.sec.ago"
-                android:drawableLeft="@drawable/version"
                 android:gravity="center"
-                android:textSize="12dp"
-                android:textColor="#868888"/>
+                android:textSize="12sp"
+                android:textColor="#868888"
+                app:drawableLeftCompat="@drawable/version" />
         </LinearLayout>
 
         <LinearLayout
