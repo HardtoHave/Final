@@ -1,12 +1,12 @@
 package com.example.afinal.utility;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 
 import com.example.afinal.R;
 import com.example.afinal.bean.Note;
@@ -27,6 +27,7 @@ public class NoteListAdapter extends RecyclerView.Adapter<NoteViewHolder> implem
     }
     private OnItemClickListener onItemClickListener;
 
+    @SuppressLint("NotifyDataSetChanged")
     public void refresh(List<Note> newNotes){
         notes.clear();
         if (newNotes!=null){

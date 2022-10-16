@@ -15,7 +15,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.afinal.activity.MainActivity;
 import com.example.afinal.R;
 import com.example.afinal.db.DBUser;
 import com.example.afinal.ui.focus.ChooseDialog;

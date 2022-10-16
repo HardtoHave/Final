@@ -25,15 +25,8 @@ public class TimeyDbHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
 
         String users = "create table users(_id integer primary key autoincrement, telephone text, username text, email text, password text)";
-        String records = "create table records(_id integer primary key autoincrement, telephone text, start_time text, end_time text, duration text)";
-        String total = "create table total(_id integer primary key autoincrement, telephone text, total_time text)";
-        String shop = "create table shop(_id integer primary key autoincrement, telephone text, coins integer)";
 
         db.execSQL(users);
-        db.execSQL(records);
-        db.execSQL(total);
-        db.execSQL(shop);
-
 
     }
 

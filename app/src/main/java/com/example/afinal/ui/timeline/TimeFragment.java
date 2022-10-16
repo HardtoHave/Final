@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -22,6 +24,7 @@ import com.example.afinal.utility.NoteListAdapter;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 
 public class TimeFragment extends Fragment {
     private SQLiteDatabase database;
@@ -31,13 +34,13 @@ public class TimeFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_timeline, container,false);
 
     }
-    public void onViewCreated(View view, Bundle savedInstanceState){
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
         DBHelper dbHelper = new DBHelper(getActivity());
         database= dbHelper.getWritableDatabase();
         RecyclerView recyclerView = view.findViewById(R.id.list_todo);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(),DividerItemDecoration.VERTICAL));
+        recyclerView.addItemDecoration(new DividerItemDecoration(requireActivity(),DividerItemDecoration.VERTICAL));
         NoteListAdapter notesAdapter = new NoteListAdapter();
         recyclerView.setAdapter(notesAdapter);
         notesAdapter.refresh(loadNotesFromDatabase());

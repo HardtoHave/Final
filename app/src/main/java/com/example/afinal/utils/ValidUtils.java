@@ -1,9 +1,9 @@
 package com.example.afinal.utils;
 
-import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Base64;
 
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.regex.Matcher;
@@ -30,7 +30,7 @@ public class ValidUtils {
 
     public static boolean isEmailValid(String email) {
         try {
-            String check = "([a-z0-9A-Z]+[-|]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}";
+            String check = "^[A-Za-z0-9-._]+@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,6})$";
             Pattern regex = Pattern.compile(check);
             Matcher matcher = regex.matcher(email);
             return matcher.matches();
@@ -44,10 +44,10 @@ public class ValidUtils {
      *
      * @return 加密后字符串
      */
-    public static String encodeByMd5(String str) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+    public static String encodeByMd5(String str) throws NoSuchAlgorithmException {
         MessageDigest md5 = MessageDigest.getInstance("MD5");
         // 注意这里是 Base64.NO_WRAP，不能用 Base64.DEFAULT，否则结尾会带一个 \n
-        return new String(Base64.encode(md5.digest(str.getBytes("utf-8")), Base64.NO_WRAP));
+        return new String(Base64.encode(md5.digest(str.getBytes(StandardCharsets.UTF_8)), Base64.NO_WRAP));
 
     }
 

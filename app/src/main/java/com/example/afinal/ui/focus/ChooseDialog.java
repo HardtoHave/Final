@@ -1,9 +1,6 @@
 package com.example.afinal.ui.focus;
 
-import com.example.afinal.activity.MainActivity;
-import com.example.afinal.R;
-import com.example.afinal.db.DBUser;
-
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.database.Cursor;
@@ -13,10 +10,11 @@ import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
 
+import com.example.afinal.R;
+import com.example.afinal.db.DBUser;
+
 
 public class ChooseDialog extends Dialog {
-    private Context context;
-    private Window window = null;
 
     private String title;
     private View dialogView;
@@ -28,14 +26,13 @@ public class ChooseDialog extends Dialog {
 
     public ChooseDialog(Context context){
         super(context, R.style.Dialog);
-        this.context = context;
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dialog_choose);
-        window = getWindow();
+        Window window = getWindow();
         window.setWindowAnimations(R.style.chooseDialogAnim);
         setCanceledOnTouchOutside(true);
 
@@ -52,7 +49,7 @@ public class ChooseDialog extends Dialog {
         String[] projection={"decoration"};
         String selection="isEquip";
         String[] selectionArgs={String.valueOf(true)};
-        Cursor cursor=db.query("theme",projection,selection,selectionArgs,null,null,null);
+        @SuppressLint("Recycle") Cursor cursor=db.query("theme",projection,selection,selectionArgs,null,null,null);
         while (cursor.moveToNext()){
             for (int i = 0; i < 4; i++) {
                 String name=cursor.getString(i);

@@ -23,10 +23,16 @@ public class MainActivity extends AppCompatActivity implements FocusFragment.Pas
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
     TextView coin;
+    public String account;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            account = extras.getString("phoneNumber");
+        }
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -44,7 +50,8 @@ public class MainActivity extends AppCompatActivity implements FocusFragment.Pas
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-
+        Bundle bundle = new Bundle();
+        bundle.putString("account", account);
     }
 
     @Override
@@ -64,5 +71,9 @@ public class MainActivity extends AppCompatActivity implements FocusFragment.Pas
     @Override
     public void passData(String data) {
         binding.appBarMain.coinSum.setText(data);
+    }
+
+    public String getAccount(){
+        return account;
     }
 }

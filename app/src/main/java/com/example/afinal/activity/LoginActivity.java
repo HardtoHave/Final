@@ -1,11 +1,7 @@
 package com.example.afinal.activity;
 
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
-
 import android.annotation.SuppressLint;
-import android.content.ContentValues;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -15,6 +11,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 
 import com.example.afinal.R;
 import com.example.afinal.databinding.ActivityLoginBinding;
@@ -119,6 +118,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                         } else {
                             Intent intentToMain = new Intent(this, MainActivity.class);
+                            intentToMain.putExtra("phoneNumber",account);
                             startActivity(intentToMain);
                         }
 
@@ -138,6 +138,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 intentToRegister.putExtra("account", account);
                 startActivity(intentToRegister);
                 break;
+            // 忘记密码响应事件
+            case R.id.tv_forget_password:
+                Intent intentToForget = new Intent(this, ForgetPasswordActivity.class);
+                startActivity(intentToForget);
+                break;
 
         }
     }
@@ -151,5 +156,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private void setOnClickListener() {
         loginBinding.btLogin.setOnClickListener(this); // 登录按钮
         loginBinding.tvToRegister.setOnClickListener(this); // 注册文字
+        loginBinding.tvForgetPassword.setOnClickListener(this); //忘记密码
     }
 }

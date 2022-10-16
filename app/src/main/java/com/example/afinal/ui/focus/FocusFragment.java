@@ -20,12 +20,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.core.app.NotificationCompat;
-import androidx.fragment.app.Fragment;
-
 import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -35,6 +29,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.app.NotificationCompat;
+import androidx.fragment.app.Fragment;
 
 import com.example.afinal.R;
 import com.example.afinal.db.DBContract;
@@ -153,16 +152,7 @@ public class FocusFragment extends Fragment {
         SharedPreferences preferences = requireActivity().getSharedPreferences("user", Context.MODE_PRIVATE);
         m_coinNum = preferences.getInt("coinSum",0);
         passDataInterface.passData(m_coinNum+"");
-        DBUser dbUser= (DBUser) DBUser.getInstance(getActivity());
-        SQLiteDatabase db = dbUser.getReadableDatabase();
-        String selection="isEquip=?";
-        String[] projection={"decoration"};
-        String[] selectionArgs= new String[]{"true"};
-        Cursor cursor=db.query("theme",projection,selection,selectionArgs,null,null,null);
-        String dec=null;
-        while(cursor.moveToNext()){
-            dec=cursor.getString(0);
-        }
+
     }
     private void initListener(){
         mBase.setOnClickListener(view -> {
@@ -285,6 +275,7 @@ public class FocusFragment extends Fragment {
                 }
             }
 
+            @SuppressLint("SetTextI18n")
             @Override
             //完成种植
             public void onFinish() {
@@ -360,7 +351,8 @@ public class FocusFragment extends Fragment {
             }
         };
     }
-    private void update(String name,int progress){
+    @SuppressLint("SetTextI18n")
+    private void update(String name, int progress){
         int minute = progress/60;
 
         if(!flagLock){
