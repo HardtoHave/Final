@@ -18,7 +18,7 @@ import androidx.databinding.DataBindingUtil;
 import com.example.afinal.R;
 import com.example.afinal.databinding.ActivityLoginBinding;
 import com.example.afinal.db.TimeyDbHelper;
-import com.example.afinal.utils.ValidUtils;
+import com.example.afinal.utility.ValidUtils;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
     // 声明SharedPreferences对象,保存应用数据

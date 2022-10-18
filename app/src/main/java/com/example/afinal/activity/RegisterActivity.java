@@ -19,7 +19,7 @@ import androidx.databinding.DataBindingUtil;
 import com.example.afinal.R;
 import com.example.afinal.databinding.ActivityRegisterBinding;
 import com.example.afinal.db.TimeyDbHelper;
-import com.example.afinal.utils.ValidUtils;
+import com.example.afinal.utility.ValidUtils;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
     // Log打印的通用Tag
@@ -102,12 +102,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         String password1 = registerBinding.etPassword.getText().toString();
         String password2 = registerBinding.etPassword2.getText().toString();
 
-        switch (view.getId()) {
-            case R.id.bt_submit_register:
-                newRegister(telephone, username, gender, password1, password2);
-                // 点击提交注册按钮响应事件
-                // 尽管后端进行了判空，但Android端依然需要判空
-                break;
+        if (view.getId() == R.id.bt_submit_register) {
+            newRegister(telephone, username, gender, password1, password2);
+            // 点击提交注册按钮响应事件
+            // 尽管后端进行了判空，但Android端依然需要判空
         }
     }
 
