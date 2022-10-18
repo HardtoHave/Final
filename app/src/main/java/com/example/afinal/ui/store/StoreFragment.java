@@ -41,7 +41,7 @@ public class StoreFragment extends Fragment {
         wukong=view.findViewById(R.id.wukong);
         SharedPreferences preferences = requireActivity().getSharedPreferences("user", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        //SQLiteDatabase db = dbHelper.getWritableDatabase();
         m_coinNum = preferences.getInt("coinSum",0);
 
         mario.setOnClickListener(v -> {
@@ -54,7 +54,7 @@ public class StoreFragment extends Fragment {
                 ContentValues values=new ContentValues();
                 values.put("decoration","mario");
                 values.put("isEquip",true);
-                db.insert("theme",null,values);
+                //db.insert("theme",null,values);
                 Toast.makeText(requireActivity(), "charge success ٩( 'ω' )و ", Toast.LENGTH_SHORT).show();
             }else {
                 Toast.makeText(requireActivity(), "Your coins not enough (○ﾟεﾟ○)", Toast.LENGTH_SHORT).show();
@@ -70,7 +70,7 @@ public class StoreFragment extends Fragment {
                 ContentValues values=new ContentValues();
                 values.put("decoration","kabi");
                 values.put("isEquip",true);
-                db.insert("theme",null,values);
+                //db.insert("theme",null,values);
                 Toast.makeText(requireActivity(), "charge success ٩( 'ω' )و ", Toast.LENGTH_SHORT).show();
             }else {
                 Toast.makeText(requireActivity(), "Your coins not enough (○ﾟεﾟ○)", Toast.LENGTH_SHORT).show();
@@ -86,7 +86,7 @@ public class StoreFragment extends Fragment {
                 ContentValues values=new ContentValues();
                 values.put("decoration","koala");
                 values.put("isEquip",true);
-                db.insert("theme",null,values);
+                //db.insert("theme",null,values);
                 Toast.makeText(requireActivity(), "charge success ٩( 'ω' )و ", Toast.LENGTH_SHORT).show();
             }else {
                 Toast.makeText(requireActivity(), "Your coins not enough (○ﾟεﾟ○)", Toast.LENGTH_SHORT).show();
@@ -102,7 +102,7 @@ public class StoreFragment extends Fragment {
                 ContentValues values=new ContentValues();
                 values.put("decoration","wukong");
                 values.put("isEquip",true);
-                db.insert("theme",null,values);
+                //db.insert("theme",null,values);
                 Toast.makeText(requireActivity(), "charge success ٩( 'ω' )و ", Toast.LENGTH_SHORT).show();
             }else {
                 Toast.makeText(requireActivity(), "Your coins not enough (○ﾟεﾟ○)", Toast.LENGTH_SHORT).show();

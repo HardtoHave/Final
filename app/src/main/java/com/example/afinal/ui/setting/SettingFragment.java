@@ -25,7 +25,6 @@ import com.example.afinal.activity.LoginActivity;
 import com.example.afinal.activity.MainActivity;
 import com.example.afinal.db.TimeyDbHelper;
 
-import java.util.Objects;
 
 
 public class SettingFragment extends Fragment {
