@@ -43,7 +43,6 @@ public class SettingFragment extends Fragment {
         Button logout = view.findViewById(R.id.bt_logout);
 
         cEmail.setOnClickListener(v->{
-            Toast.makeText(requireActivity(), "success", Toast.LENGTH_SHORT).show();
             Dialog dialog = new Dialog(requireActivity());
             dialog.setContentView(R.layout.dialog_changemail);
             dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
