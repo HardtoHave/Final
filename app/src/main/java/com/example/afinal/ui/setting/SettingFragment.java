@@ -28,7 +28,7 @@ import com.example.afinal.db.TimeyDbHelper;
 
 
 public class SettingFragment extends Fragment {
-    TextView okay_text, cancel_text,okay_text2, cancel_text2;
+    Button okay_text, cancel_text,okay_text2, cancel_text2;
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -43,6 +43,7 @@ public class SettingFragment extends Fragment {
         Button logout = view.findViewById(R.id.bt_logout);
 
         cEmail.setOnClickListener(v->{
+            Toast.makeText(requireActivity(), "success", Toast.LENGTH_SHORT).show();
             Dialog dialog = new Dialog(requireActivity());
             dialog.setContentView(R.layout.dialog_changemail);
             dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -102,6 +103,7 @@ public class SettingFragment extends Fragment {
             });
 
             cancel_text.setOnClickListener(v12 -> dialog.dismiss());
+            dialog.show();
         });
         // change email function
 //        changeEmail.setOnClickListener(v -> {
@@ -210,6 +212,7 @@ public class SettingFragment extends Fragment {
                 dialog.dismiss();
             });
             cancel_text2.setOnClickListener(v12 -> dialog.dismiss());
+            dialog.show();
         });
 //        changePassword.setOnClickListener(v -> {
 //            EditText passwordOldEditText = view.findViewById(R.id.et_password_old);
