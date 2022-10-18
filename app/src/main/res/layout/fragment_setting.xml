@@ -21,143 +21,40 @@
         app:layout_constraintTop_toTopOf="parent"
         >
 
-        <LinearLayout
-            android:id="@+id/ll_top"
+
+
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/tv_change_email"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="@string/tv_change_email" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/ll_middle"
+            android:layout_marginStart="10dp"
+            android:text="@string/change_email"
+            android:textSize="15sp"
+            android:textColor="#868888"
+            android:paddingTop="10dp"
+            android:id="@+id/tv_change_email"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="#E8EDED"
+            android:layout_height="0.5dp"/>
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/et_email_old"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:autofillHints=""
-                android:ems="15"
-                android:hint="@string/et_email_old"
-                android:inputType="textEmailAddress"
-                android:minHeight="48dp"
-                android:singleLine="true"
-                tools:targetApi="o" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/ll_bottom"
+            android:layout_marginStart="10dp"
+            android:text="@string/change_password"
+            android:textSize="15sp"
+            android:textColor="#868888"
+            android:paddingTop="5dp"
+            android:id="@+id/tv_change_password"/>
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:orientation="vertical">
-
-            <EditText
-                android:id="@+id/et_email_new"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:autofillHints=""
-                android:ems="15"
-                android:hint="@string/et_email_new"
-                android:inputType="textEmailAddress"
-                android:minHeight="48dp"
-                android:singleLine="true"
-                tools:targetApi="o" />
-
-            <EditText
-                android:id="@+id/et_email_new2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:autofillHints=""
-                android:ems="15"
-                android:hint="@string/et_email_new2"
-                android:inputType="textEmailAddress"
-                android:minHeight="48dp"
-                android:singleLine="true"
-                tools:targetApi="o" />
-
-            <Button
-                android:id="@+id/bt_change_email"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:background="@drawable/login_button"
-                android:text="@string/bt_change_email" />
-
-            <TextView
-                android:id="@+id/tv_change_password"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/tv_change_password" />
-
-            <EditText
-                android:id="@+id/et_password_old"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:autofillHints=""
-                android:ems="15"
-                android:hint="@string/et_password_old"
-                android:inputType="textPassword"
-                android:minHeight="48dp"
-                android:selectAllOnFocus="true"
-                android:singleLine="true"
-                tools:targetApi="o" />
-
-            <EditText
-                android:id="@+id/et_password_new"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:autofillHints=""
-                android:ems="15"
-                android:hint="@string/et_password_new"
-                android:inputType="textPassword"
-                android:minHeight="48dp"
-                android:selectAllOnFocus="true"
-                android:singleLine="true"
-                tools:targetApi="o" />
-
-            <EditText
-                android:id="@+id/et_password_new2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:autofillHints=""
-                android:ems="15"
-                android:hint="@string/et_password_new2"
-                android:inputType="textPassword"
-                android:minHeight="48dp"
-                android:selectAllOnFocus="true"
-                android:singleLine="true"
-                tools:targetApi="o" />
-
-            <Button
-                android:id="@+id/bt_change_password"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:layout_marginBottom="12dp"
-                android:background="@drawable/login_button"
-                android:text="@string/bt_change_password" />
-        </LinearLayout>
-
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="#E8EDED"
+            android:layout_height="0.5dp"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -222,13 +119,6 @@
             android:background="#E8EDED"
             android:layout_height="0.5dp"/>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:background="#E8EDED"
-            android:layout_height="0.5dp"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -254,20 +144,14 @@
                 app:drawableLeftCompat="@drawable/version" />
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/bt_logout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="0dp"
-            >
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-
-
+            android:layout_marginTop="12dp"
+            android:text="@string/bt_logout" />
     </LinearLayout>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
