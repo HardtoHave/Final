@@ -56,8 +56,8 @@ public class FocusFragment extends Fragment {
     private ImageView mTree;
 
 
-    private Button mStartButton;
-    private Button mCancelButton;
+    private androidx.appcompat.widget.AppCompatButton mStartButton;
+    private androidx.appcompat.widget.AppCompatButton mCancelButton;
 
     private ChooseDialog mChooseDialog;
     private String choose;
