@@ -32,7 +32,7 @@
             android:layout_width="400dp"
             android:layout_height="450dp"
             android:layout_marginTop="50dp"
-            android:contentDescription="Base"
+            android:contentDescription="@string/base"
             android:scaleType="centerInside"
             android:scaleX="0.7"
             android:scaleY="0.7"
@@ -86,8 +86,8 @@
             android:layout_marginBottom="50dp"
             android:background="@drawable/start_button"
             android:text="@string/start"
-            android:textColor="@color/dark_background"
-            android:textAllCaps="false"/>
+            android:textAllCaps="false"
+            android:textColor="@color/dark_background" />
 
         <Button
             android:id="@+id/cancelButton"

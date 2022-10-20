@@ -219,7 +219,7 @@ public class FocusFragment extends Fragment {
             boolean succeed = saveNoteToDatabase(choose+level,sche,"0", "0");
             if (succeed) {
                 Toast.makeText(getActivity(),
-                        "Successful ! (｡･ω･｡)ﾉ♡", Toast.LENGTH_SHORT).show();
+                        "Keep going on next time ! (｡･ω･｡)ﾉ♡", Toast.LENGTH_SHORT).show();
                 requireActivity().setResult(Activity.RESULT_OK);
             } else {
                 Toast.makeText(getActivity(),
@@ -301,7 +301,7 @@ public class FocusFragment extends Fragment {
                 boolean succeed = saveNoteToDatabase(choose+level,sche, time,"1");
                 if (succeed) {
                     Toast.makeText(getActivity(),
-                            "Successful ! (｡･ω･｡)ﾉ♡", Toast.LENGTH_SHORT).show();
+                            "Successful! (｡･ω･｡)ﾉ♡", Toast.LENGTH_SHORT).show();
                     requireActivity().setResult(Activity.RESULT_OK);
                 } else {
                     Toast.makeText(getActivity(),
