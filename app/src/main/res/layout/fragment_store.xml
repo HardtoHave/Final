@@ -35,12 +35,13 @@
                     android:contentDescription="@string/mario"/>
 
                 <Button
+                    android:id="@+id/mario"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/M2000"
-                    android:textColorHint="#303F9F"
                     android:layout_gravity="center"
-                    android:id="@+id/mario"/>
+                    android:background="@drawable/purchase_button"
+                    android:text="@string/M2000"
+                    android:textColor="#4E342E" />
             </LinearLayout>
 
 
@@ -61,12 +62,14 @@
                     android:contentDescription="@string/kabi"/>
 
                 <Button
+                    android:id="@+id/kabi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/M2000"
-                    android:textColorHint="#303F9F"
                     android:layout_gravity="center"
-                    android:id="@+id/kabi"/>
+                    android:background="@drawable/purchase_button"
+                    android:text="@string/M2000"
+                    android:textColor="#4E342E"
+                    android:textColorHint="#303F9F" />
             </LinearLayout>
         </LinearLayout>
 
@@ -90,12 +93,14 @@
                     android:contentDescription="@string/koala"/>
 
                 <Button
+                    android:id="@+id/koala"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/M2000"
-                    android:textColorHint="#303F9F"
                     android:layout_gravity="center"
-                    android:id="@+id/koala"/>
+                    android:background="@drawable/purchase_button"
+                    android:text="@string/M2000"
+                    android:textColor="#4E342E"
+                    android:textColorHint="#303F9F" />
             </LinearLayout>
 
 
@@ -116,12 +121,14 @@
                     android:contentDescription="@string/wukong"/>
 
                 <Button
+                    android:id="@+id/wukong"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/M2000"
-                    android:textColorHint="#303F9F"
                     android:layout_gravity="center"
-                    android:id="@+id/wukong"/>
+                    android:background="@drawable/purchase_button"
+                    android:text="@string/M2000"
+                    android:textColor="#4E342E"
+                    android:textColorHint="#303F9F" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
