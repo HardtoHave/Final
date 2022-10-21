@@ -45,7 +45,7 @@
             android:scaleY="0.8"
             android:layout_columnWeight="1"
             android:scaleType="centerInside"
-            android:src="@drawable/starburst7"/>
+            android:src="@drawable/kabi"/>
         <ImageView
             android:id="@+id/time"
             android:layout_height="100dp"
@@ -53,15 +53,7 @@
             android:scaleY="0.8"
             android:layout_width="0dp"
             android:layout_columnWeight="1"
-            android:src="@drawable/time7"/>
-        <ImageView
-            android:id="@+id/star"
-            android:layout_height="100dp"
-            android:scaleX="0.8"
-            android:scaleY="0.8"
-            android:layout_width="0dp"
-            android:layout_columnWeight="1"
-            android:src="@drawable/star7"/>
+            android:src="@drawable/koala"/>
     </GridLayout>
 
 </LinearLayout>
