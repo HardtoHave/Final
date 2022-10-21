@@ -38,6 +38,7 @@ public class TimeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         DBHelper dbHelper = new DBHelper(getActivity());
         database= dbHelper.getWritableDatabase();
+        //recycler view to show timeline
         RecyclerView recyclerView = view.findViewById(R.id.list_todo);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.addItemDecoration(new DividerItemDecoration(requireActivity(),DividerItemDecoration.VERTICAL));
@@ -46,6 +47,7 @@ public class TimeFragment extends Fragment {
         notesAdapter.refresh(loadNotesFromDatabase());
     }
     @SuppressLint("Range")
+    //get information from database
     private List<Note> loadNotesFromDatabase(){
         if (database==null){
             return Collections.emptyList();

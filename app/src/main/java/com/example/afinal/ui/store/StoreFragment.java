@@ -25,7 +25,6 @@ public class StoreFragment extends Fragment {
 
     private Button mario, kabi, koala, wukong;
     private int m_coinNum;
-    private final DBUser dbHelper= (DBUser) DBUser.getInstance(getContext());
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState){
@@ -41,7 +40,6 @@ public class StoreFragment extends Fragment {
         wukong=view.findViewById(R.id.wukong);
         SharedPreferences preferences = requireActivity().getSharedPreferences("user", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
-        //SQLiteDatabase db = dbHelper.getWritableDatabase();
         m_coinNum = preferences.getInt("coinSum",0);
 
         mario.setOnClickListener(v -> {

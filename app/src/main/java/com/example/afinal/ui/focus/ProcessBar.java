@@ -249,7 +249,6 @@ public class ProcessBar extends View {
     }
     /**
      * set synchronized progress
-     * 刷新界面调用postInvalidate()能在非UI线程刷新
      */
     public synchronized void setProgress(int progress) {
         if(progress < 0){

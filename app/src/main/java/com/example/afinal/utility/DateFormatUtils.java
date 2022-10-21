@@ -3,6 +3,7 @@ package com.example.afinal.utility;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Objects;
 
 public class DateFormatUtils {
     private static final String DATE_FORMAT_PATTERN_YMD = "yyyy-MM-dd";
@@ -21,7 +22,7 @@ public class DateFormatUtils {
 
     private static long strToLong(String dateStr, String pattern) {
         try {
-            return new SimpleDateFormat(pattern, Locale.getDefault()).parse(dateStr).getTime();
+            return Objects.requireNonNull(new SimpleDateFormat(pattern, Locale.getDefault()).parse(dateStr)).getTime();
         } catch (Throwable ignored) {
         }
         return 0;

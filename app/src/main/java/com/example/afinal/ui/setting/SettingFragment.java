@@ -104,57 +104,6 @@ public class SettingFragment extends Fragment {
             cancel_text.setOnClickListener(v12 -> dialog.dismiss());
             dialog.show();
         });
-        // change email function
-//        changeEmail.setOnClickListener(v -> {
-//            EditText emailOldEditText = view.findViewById(R.id.et_email_old);
-//            String emailOld = emailOldEditText.getText().toString();
-//
-//            EditText emailNewEditText = view.findViewById(R.id.et_email_new);
-//            String emailNew = emailNewEditText.getText().toString();
-//
-//            EditText emailNew2EditText = view.findViewById(R.id.et_email_new2);
-//            String emailNew2 = emailNew2EditText.getText().toString();
-//
-//            // non-empty validate
-//            if (TextUtils.isEmpty(emailOld) || TextUtils.isEmpty(emailNew) || TextUtils.isEmpty(emailNew2)) {
-//                Toast.makeText(requireActivity(), "Change failed due to the presence of an empty input", Toast.LENGTH_SHORT).show();
-//                return;
-//            }
-//
-//            // email validate
-//            if (!TextUtils.equals(emailNew, emailNew2)) {
-//                Toast.makeText(requireActivity(), "Inconsistent emails", Toast.LENGTH_SHORT).show();
-//                return;
-//            }
-//
-//            // change email
-//            SQLiteOpenHelper database = TimeyDbHelper.getInstance(getContext());
-//            SQLiteDatabase db = database.getWritableDatabase();
-//
-//            if(db.isOpen()){
-//                // check if the user had been registered
-//                Cursor cursor = db.query("users",null,"email=? and telephone=?", new String[]{emailOld,account},null,null,null);
-//                Cursor cursor2 = db.query("users",null,"email=? and telephone=?", new String[]{emailNew,account},null,null,null);
-//
-//                if (cursor.getCount() == 0) {
-//                    // did not find email
-//                    Toast.makeText(requireActivity(), "Wrong email", Toast.LENGTH_SHORT).show();
-//                } else {
-//                    if (cursor2.getCount() == 0) {
-//                        String sql = "update users set email=? where email=?";
-//                        db.execSQL(sql, new Object[]{emailNew, emailOld});
-//                        Intent intentToForget = new Intent(requireActivity(), MainActivity.class);
-//                        startActivity(intentToForget);
-//                        Toast.makeText(requireActivity(), "The email was successfully changed", Toast.LENGTH_SHORT).show();
-//                    } else {
-//                        Toast.makeText(requireActivity(), "This email is already in use", Toast.LENGTH_SHORT).show();
-//                    }
-//                }
-//                cursor.close();
-//                db.close();
-//            }
-//
-//        });
 
         // change password function
         cPassword.setOnClickListener(v->{
@@ -213,51 +162,6 @@ public class SettingFragment extends Fragment {
             cancel_text2.setOnClickListener(v12 -> dialog.dismiss());
             dialog.show();
         });
-//        changePassword.setOnClickListener(v -> {
-//            EditText passwordOldEditText = view.findViewById(R.id.et_password_old);
-//            String passwordOld = passwordOldEditText.getText().toString();
-//
-//            EditText passwordNewEditText = view.findViewById(R.id.et_password_new);
-//            String passwordNew = passwordNewEditText.getText().toString();
-//
-//            EditText passwordNew2EditText = view.findViewById(R.id.et_password_new2);
-//            String passwordNew2 = passwordNew2EditText.getText().toString();
-//
-//            // non-empty validate
-//            if (TextUtils.isEmpty(passwordOld) || TextUtils.isEmpty(passwordNew) || TextUtils.isEmpty(passwordNew2)) {
-//                Toast.makeText(requireActivity(), "Change failed due to the presence of an empty input", Toast.LENGTH_SHORT).show();
-//                return;
-//            }
-//
-//            // password validate
-//            if (!TextUtils.equals(passwordNew, passwordNew2)) {
-//                Toast.makeText(requireActivity(), "Inconsistent passwords", Toast.LENGTH_SHORT).show();
-//                return;
-//            }
-//
-//            // change password
-//            SQLiteOpenHelper database = TimeyDbHelper.getInstance(getContext());
-//            SQLiteDatabase db = database.getWritableDatabase();
-//
-//            if(db.isOpen()){
-//                // check if the user had been registered
-//                Cursor cursor = db.query("users",null,"password=? and telephone=?", new String[]{passwordOld,account},null,null,null);
-//
-//                if (cursor.getCount() == 0) {
-//                    // did not find password
-//                    Toast.makeText(requireActivity(), "Wrong password", Toast.LENGTH_SHORT).show();
-//                } else {
-//                    String sql = "update users set password=? where password=?";
-//                    db.execSQL(sql, new Object[]{passwordNew, passwordOld});
-//                    Intent intentToForget = new Intent(requireActivity(), MainActivity.class);
-//                    startActivity(intentToForget);
-//                    Toast.makeText(requireActivity(), "The password was successfully changed", Toast.LENGTH_SHORT).show();
-//                }
-//                cursor.close();
-//                db.close();
-//            }
-//
-//        });
 
         // logout function
         logout.setOnClickListener(v -> logoutActivity());
@@ -267,7 +171,7 @@ public class SettingFragment extends Fragment {
     public void logoutActivity() {
 
         Intent intent = new Intent(requireActivity(), LoginActivity.class);
-        //下面2个flags ,可以将原有任务栈清空
+        //clear task stack
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
