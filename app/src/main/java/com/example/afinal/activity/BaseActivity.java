@@ -20,14 +20,12 @@ public class BaseActivity extends AppCompatActivity {
 
     // full screen
     protected void fullScreenConfig() {
-        // 去除ActionBar(因使用的是NoActionBar的主题，故此句有无皆可)
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        // 去除状态栏，如 电量、Wifi信号等
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 
-    // 实现在子线程中显示Toast
+    // implement sub thread to show Toast
     protected void showToastInThread(Context context, String msg) {
         runOnUiThread(() -> {
             toast = Toast.makeText(context, msg, Toast.LENGTH_LONG);

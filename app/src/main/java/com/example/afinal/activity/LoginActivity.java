@@ -21,9 +21,9 @@ import com.example.afinal.db.TimeyDbHelper;
 import com.example.afinal.utility.ValidUtils;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
-    // 声明SharedPreferences对象,保存应用数据
+    // declare SharedPreferences to save data
     SharedPreferences sp;
-    // 声明SharedPreferences编辑器对象，修改sp的值
+    // declare SharedPreferencese ditor to change sp
     SharedPreferences.Editor editor;
 
     // Log打印的通用Tag
@@ -34,24 +34,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //绑定activity_login.xml
+        //bind activity_login.xml
         loginBinding = DataBindingUtil.setContentView(this, R.layout.activity_login);
-
-//        Uri uri=Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.login_video);
-//        VideoView mVideoView = (VideoView)findViewById(R.id.back_video);
-//        mVideoView.setVideoURI(uri);
-//        mVideoView.start();
-//        mVideoView.setOnPreparedListener(mediaPlayer -> {
-//            mediaPlayer.setLooping(true);
-//        });
-        //设置监听事件
         setOnClickListener();
 
          /*
-            当输入框焦点失去时,检验输入数据，提示错误信息
-            第一个参数：输入框对象
-            第二个参数：输入数据类型
-            第三个参数：输入不合法时提示信息
+            when lost inout focus, check data and remind error mesg
+            1st param：input object
+            2nd param：input data type
+            3rd param：illegal information
          */
         setOnFocusChangeErrMsg(loginBinding.etAccount, "phone", "Incorrect mobile number format");
         setOnFocusChangeErrMsg(loginBinding.etPassword, "password", "Password must be at least 6 digits");
@@ -60,9 +51,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         database.getReadableDatabase();
     }
     /*
-    当账号输入框失去焦点时，校验账号
-    当密码输入框失去焦点时，校验密码
-    如有错误，提示错误信息
+    show error mesg
      */
     private void setOnFocusChangeErrMsg(EditText editText, String inputType, String errMsg) {
         editText.setOnFocusChangeListener(
@@ -91,16 +80,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View view) {
-        // 获取用户输入的账号和密码以进行验证
+        // validate account and password
         String account = loginBinding.etAccount.getText().toString();
         String password = loginBinding.etPassword.getText().toString();
 
         switch (view.getId()) {
-            // 登录按钮 响应事件
             case R.id.bt_login:
-                // 让密码输入框失去焦点,触发setOnFocusChangeErrMsg方法
+                // trigger setOnFocusChangeErrMsg
                 loginBinding.etPassword.clearFocus();
-                // 发送URL请求之前,先进行校验
+                // validate before sending url
                 if (!(ValidUtils.isPhoneValid(account) && ValidUtils.isPasswordValid(password))) {
                     Toast.makeText(this, "Wrong account or password format", Toast.LENGTH_SHORT).show();
                     break;
@@ -127,18 +115,16 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     }
                 }
                 break;
-            // 注册用户 响应事件
+            // register user
             case R.id.tv_to_register:
                 /*
-                  关于这里传参说明：给用户一个良好的体验，
-                  如果在登录界面填写过的，就不需要再填了
-                  所以Intent把填写过的数据传递给注册界面
+                  intent passing data to register page
                  */
                 Intent intentToRegister = new Intent(this, RegisterActivity.class);
                 intentToRegister.putExtra("account", account);
                 startActivity(intentToRegister);
                 break;
-            // 忘记密码响应事件
+            // forget password event
             case R.id.tv_forget_password:
                 Intent intentToForget = new Intent(this, ForgetPasswordActivity.class);
                 startActivity(intentToForget);
@@ -152,10 +138,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onPointerCaptureChanged(hasCapture);
     }
 
-    // 为点击事件的UI对象设置监听器
+    // set click listener
     private void setOnClickListener() {
-        loginBinding.btLogin.setOnClickListener(this); // 登录按钮
-        loginBinding.tvToRegister.setOnClickListener(this); // 注册文字
-        loginBinding.tvForgetPassword.setOnClickListener(this); //忘记密码
+        loginBinding.btLogin.setOnClickListener(this); // login
+        loginBinding.tvToRegister.setOnClickListener(this); // register
+        loginBinding.tvForgetPassword.setOnClickListener(this); //forget password
     }
 }

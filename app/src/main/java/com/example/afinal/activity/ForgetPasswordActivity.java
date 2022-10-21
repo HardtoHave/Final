@@ -40,9 +40,9 @@ public class ForgetPasswordActivity extends AppCompatActivity{
         Button sendButton = findViewById(R.id.bt_send_email);
 
         sendButton.setOnClickListener(view -> {
-            EditText emailEditText = (EditText)findViewById(R.id.et_email);
+            EditText emailEditText = findViewById(R.id.et_email);
             String email = emailEditText.getText().toString();
-
+            //forget password
             if (view.getId() == R.id.bt_send_email) {
                 sendEmail(email);
             }
