@@ -22,46 +22,33 @@ import com.example.afinal.db.TimeyDbHelper;
 import com.example.afinal.utility.ValidUtils;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
-    // Log打印的通用Tag
-    private final String TAG = "RegisterActivity";
     String account = "";
-    private SharedPreferences sp;
-    private SharedPreferences.Editor editor;
     private ActivityRegisterBinding registerBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         registerBinding = DataBindingUtil.setContentView(this, R.layout.activity_register);
-        // 接收用户在登录界面输入的数据，简化用户操作（如果输入过了就不用再输入了）
-        // 注意接收上一个页面 Intent 的信息，需要 getIntent() 即可，而非重新 new 一个 Intent
+        // get login page data
         Intent intent = getIntent();
         account = intent.getStringExtra("account");
-        // 把对应的 account 设置到 telephone 输入框
         registerBinding.etTelephone.setText(account);
-        // 为点击事件设置监听器
+        // set listener
         setOnClickListener();
-
-         /*
-            设置当输入框焦点失去时提示错误信息
-            第一个参数：输入框对象
-            第二个参数：输入数据类型
-            第三个参数：输入不合法时提示信息
-         */
+        //same as function in login activity
         setOnFocusChangeErrMsg(registerBinding.etTelephone, "phone", "Incorrect mobile number format");
         setOnFocusChangeErrMsg(registerBinding.etPassword, "password", "Password must be at least 6 digits");
         setOnFocusChangeErrMsg(registerBinding.etGender, "email", "Incorrect email format");
     }
 
     /*
-    当输入账号FocusChange时，校验账号
-    当输入密码FocusChange时，校验密码
+    validate account and password
      */
     private void setOnFocusChangeErrMsg(EditText editText, String inputType, String errMsg) {
         editText.setOnFocusChangeListener(
                 (v, hasFocus) -> {
                     String inputStr = editText.getText().toString();
-                    // 失去焦点
+                    // lost focus
                     if (!hasFocus) {
                         switch (inputType) {
                             case "phone":
@@ -103,9 +90,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         String password2 = registerBinding.etPassword2.getText().toString();
 
         if (view.getId() == R.id.bt_submit_register) {
+            //insert data
             newRegister(telephone, username, gender, password1, password2);
-            // 点击提交注册按钮响应事件
-            // 尽管后端进行了判空，但Android端依然需要判空
         }
     }
 

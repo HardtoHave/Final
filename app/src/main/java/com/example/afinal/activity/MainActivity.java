@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements FocusFragment.Pas
         if (extras != null) {
             account = extras.getString("phoneNumber");
         }
-
+        //bind bar and drawer
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -60,14 +60,14 @@ public class MainActivity extends AppCompatActivity implements FocusFragment.Pas
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
-
+    //nav controller
     @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
-
+    //interface implementation
     @Override
     public void passData(String data) {
         binding.appBarMain.coinSum.setText(data);

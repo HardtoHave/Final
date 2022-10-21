@@ -23,11 +23,8 @@ import com.example.afinal.utility.ValidUtils;
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
     // declare SharedPreferences to save data
     SharedPreferences sp;
-    // declare SharedPreferencese ditor to change sp
+    // declare SharedPreferencese editor to change sp
     SharedPreferences.Editor editor;
-
-    // Log打印的通用Tag
-    private final String TAG = "LoginActivity";
 
 
     private ActivityLoginBinding loginBinding;
