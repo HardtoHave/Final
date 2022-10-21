@@ -1,5 +1,6 @@
 package com.example.afinal.ui.focus;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -16,20 +17,20 @@ import android.view.View;
 import com.example.afinal.R;
 
 public class ProcessBar extends View {
-    private Paint paint;
+    private final Paint paint;
     private int roundColor;
     private int roundProgressColor;
     private int circleBackgroundColor;
     private float roundWidth;
     private int oldx,oldy;
-    private int cx,cy;
     private int max;        //max progress
     private int progress;   //current progress
-    private int textColor;  //center progress text color
-    private float textSize; //center progress text size
+    private final int textColor;  //center progress text color
+    private final float textSize; //center progress text size
     private float pointRadius;
-    private float pointWidth;
-    private Drawable mThumb, mThumbPress;
+    private final float pointWidth;
+    private final Drawable mThumb;
+    private final Drawable mThumbPress;
 
     private static boolean flagLock = false;
     private progressCallback mProgressCallback;
@@ -40,10 +41,11 @@ public class ProcessBar extends View {
     public ProcessBar(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
+    @SuppressLint("UseCompatLoadingForDrawables")
     public ProcessBar(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         paint = new Paint();
-        TypedArray mTypedArray = context.obtainStyledAttributes(attrs, R.styleable.RoundProgressBar);
+        @SuppressLint("CustomViewStyleable") TypedArray mTypedArray = context.obtainStyledAttributes(attrs, R.styleable.RoundProgressBar);
 
         roundColor = mTypedArray.getColor(R.styleable.RoundProgressBar_roundColor, Color.RED);
         roundProgressColor = mTypedArray.getColor(R.styleable.RoundProgressBar_roundProgressColor, Color.GREEN);
@@ -57,7 +59,7 @@ public class ProcessBar extends View {
         pointRadius = mTypedArray.getDimension(R.styleable.RoundProgressBar_pointRadius, 3);
         pointWidth = mTypedArray.getDimension(R.styleable.RoundProgressBar_pointWidth, 2);
         mTypedArray.recycle();
-        // 加载拖动图标
+        // load move icon
         mThumb = getResources().getDrawable(R.drawable.press_up);// 圆点图片
         int thumbHalfheight = mThumb.getIntrinsicHeight() / 2;
         int thumbHalfWidth = mThumb.getIntrinsicWidth() / 2;
@@ -73,24 +75,24 @@ public class ProcessBar extends View {
         //draw the circle background
 //        paint.setColor(circleBackgroundColor);
 //        paint.setStyle(Paint.Style.FILL);
-        paint.setAntiAlias(true);  //消除锯齿
+        paint.setAntiAlias(true);  //eliminate jaggies
 //        canvas.drawCircle(centerX, centerY, radius-roundWidth/2, paint);
 
-        RectF oval = new RectF(centerX - radius, centerY - radius, centerX + radius, centerY + radius);  //用于定义的圆弧的形状和大小的界限
+        @SuppressLint("DrawAllocation") RectF oval = new RectF(centerX - radius, centerY - radius, centerX + radius, centerY + radius);  //用于定义的圆弧的形状和大小的界限
         PointF progressPoint = ChartUtil.calcArcEndPointXY(centerX, centerY, radius, 360 * progress / max, 270);
         if(!flagLock) {
-            // 画最外层的大圆环
-            paint.setColor(roundColor); //设置圆环的颜色
-            paint.setStyle(Paint.Style.STROKE); //设置空心
-            paint.setStrokeWidth(roundWidth); //设置圆环的宽度
-            canvas.drawCircle(centerX, centerY, radius, paint); //画出圆环
+            // draw outest circle
+            paint.setColor(roundColor); //set circle color
+            paint.setStyle(Paint.Style.STROKE); //set empty
+            paint.setStrokeWidth(roundWidth); //set circle width
+            canvas.drawCircle(centerX, centerY, radius, paint);
 
-            //画圆弧 ，画圆环的进度
-            paint.setStrokeWidth(roundWidth + 2); //设置圆环的宽度
-            paint.setColor(roundProgressColor);  //设置进度的颜色
+            //draw circular arc and its progress
+            paint.setStrokeWidth(roundWidth + 2); //set arc width
+            paint.setColor(roundProgressColor);  //set peogress color
             paint.setStyle(Paint.Style.STROKE);
             canvas.drawArc(oval, 270, 360 * progress / max, false, paint);  //根据进度画圆弧
-            // 画圆上的两个点
+            // teo points on the circle
             paint.setStrokeWidth(pointWidth);
             // PointF startPoint = ChartUtil.calcArcEndPointXY(centerX, centerY, radius, 0, 270);
             // canvas.drawCircle(startPoint.x, startPoint.y, pointRadius, paint);
@@ -98,16 +100,16 @@ public class ProcessBar extends View {
             //canvas.drawCircle(progressPoint.x, progressPoint.y, pointRadius, paint);
         }
 
-        //画文字
+        //text
         paint.setStrokeWidth(0);
         paint.setColor(textColor);
         paint.setTextSize(textSize);
-        // paint.setTypeface(Typeface.DEFAULT); //设置字体
+        // paint.setTypeface(Typeface.DEFAULT); //set text
         String textTime = getTimeText(progress);
-        float textWidth = paint.measureText(textTime);   //测量字体宽度，我们需要根据字体的宽度设置在圆环中间
+        float textWidth = paint.measureText(textTime);   //measure text width
 //        canvas.drawText(textTime, centerX - textWidth / 2, 160 + radius + centerY + textSize/2, paint);
 
-        // 画Thumb
+        // draw Thumb
         canvas.save();
         canvas.translate(progressPoint.x, progressPoint.y);
         if(!flagLock) {
@@ -120,6 +122,7 @@ public class ProcessBar extends View {
         canvas.restore();
     }
     private boolean downOnArc = false;
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         int action = event.getAction();
@@ -153,7 +156,7 @@ public class ProcessBar extends View {
     }
     private int centerX, centerY;
     private int radius;
-    private int paddingOuterThumb;
+    private final int paddingOuterThumb;
     @Override
     protected void onSizeChanged(int width, int height, int oldw, int oldh) {
         centerX = width / 2;
@@ -164,16 +167,16 @@ public class ProcessBar extends View {
         maxValidateTouchArcRadius = (int) (radius + paddingOuterThumb*1.5f);
         super.onSizeChanged(width, height, oldw, oldh);
     }
-    // 根据点的位置，更新进度
+    // update progress
     private void updateArc(int x, int y) {
-        cx = x - getWidth() / 2;
-        cy = y - getHeight() / 2;
-        // 计算角度，得出（-1->1）之间的数据，等同于（-180°->180°）
+        int cx = x - getWidth() / 2;
+        int cy = y - getHeight() / 2;
+        // calculate angular，（-1->1）=（-180°->180°）
         double oldAngle = Math.atan2(oldy, oldx)/Math.PI;
         double angle = Math.atan2(cy, cx)/Math.PI;
         Log.d("oldAngle:",oldAngle+"");
         Log.d("Angle:",angle+"");
-        // 将角度转换成（0->2）之间的值，然后加上90°的偏移量
+        // change angular to number between（0->2, add 90 degree offset
         if(oldAngle<=-0.5 && angle>-0.5 && angle < 0.5){
             angle = 2;
         }
@@ -187,12 +190,12 @@ public class ProcessBar extends View {
         if(timeBlock <=10)
             timeBlock = 5;
         if(timeBlock <=117)
-            timeBlock = timeBlock/5*5+5>120 ? 120 : timeBlock/5*5+5;
+            timeBlock = Math.min(timeBlock / 5 * 5 + 5, 120);
         else
             timeBlock = 120;
         Log.d("time:",timeBlock+"");
-        // 用（0->2）之间的角度值乘以总进度，等于当前进度
-        progress = (int) (timeBlock * max/120);
+        //current progress=angular number x total progress
+        progress = timeBlock * max/120;
         if (changeListener != null) {
             changeListener.onProgressChange(max, progress);
         }
@@ -202,23 +205,20 @@ public class ProcessBar extends View {
 
     //progress callback
     public interface progressCallback{
-        public void updateListener(int _progress);
+        void updateListener(int _progress);
     }
     public void setProgressCallback(progressCallback progressCallback){
         this.mProgressCallback = progressCallback;
     }
 
-    private int minValidateTouchArcRadius; // 最小有效点击半径
-    private int maxValidateTouchArcRadius; // 最大有效点击半径
-    // 判断是否按在圆边上
+    private int minValidateTouchArcRadius; // set minimum clickable radius
+    private int maxValidateTouchArcRadius; // set maximum clickable radius
+    // judge click
     private boolean isTouchArc(int x, int y) {
         double d = getTouchRadius(x, y);
-        if (d >= minValidateTouchArcRadius && d <= maxValidateTouchArcRadius) {
-            return true;
-        }
-        return false;
+        return d >= minValidateTouchArcRadius && d <= maxValidateTouchArcRadius;
     }
-    // 计算某点到圆点的距离
+    // calculate distance point to origin
     private double getTouchRadius(int x, int y) {
         int cx = x - getWidth() / 2;
         int cy = y - getHeight() / 2;
@@ -227,15 +227,13 @@ public class ProcessBar extends View {
     public String getTimeText(int progress) {
         int minute = progress / 60;
         int second = progress % 60;
-        String result = (minute < 10 ? "0" : "") + minute + ":" + (second < 10 ? "0" : "") + second;
-        return result;
+        return (minute < 10 ? "0" : "") + minute + ":" + (second < 10 ? "0" : "") + second;
     }
     public synchronized int getMax() {
         return max;
     }
     /**
-     * 设置进度的最大值
-     * @param max
+     * set peogress maximum
      */
     public synchronized void setMax(int max) {
         if(max < 0){
@@ -244,16 +242,14 @@ public class ProcessBar extends View {
         this.max = max;
     }
     /**
-     * 获取进度.需要同步
-     * @return
+     * get progress
      */
     public synchronized int getProgress() {
         return progress;
     }
     /**
-     * 设置进度，此为线程安全控件，由于考虑多线的问题，需要同步
+     * set synchronized progress
      * 刷新界面调用postInvalidate()能在非UI线程刷新
-     * @param progress
      */
     public synchronized void setProgress(int progress) {
         if(progress < 0){
@@ -262,10 +258,8 @@ public class ProcessBar extends View {
         if(progress > max){
             progress = max;
         }
-        if(progress <= max){
-            this.progress = progress;
-            postInvalidate();
-        }
+        this.progress = progress;
+        postInvalidate();
     }
     public int getCricleColor() {
         return roundColor;
@@ -287,17 +281,14 @@ public class ProcessBar extends View {
     }
     public static class ChartUtil {
         /**
-         * 依圆心坐标，半径，扇形角度，计算出扇形终射线与圆弧交叉点的xy坐标
-         * @param cirX
-         * @param cirY
-         * @param radius
-         * @param cirAngle
-         * @return
+         * Calculate the xy coordinates of the intersection of
+         * the sector end ray and the arc according to the center coordinates, radius and sector angle.
+         *
          */
         public static PointF calcArcEndPointXY(float cirX, float cirY, float radius, float cirAngle){
             float posX = 0.0f;
             float posY = 0.0f;
-            //将角度转换为弧度
+            //angle to radian conversion
             float arcAngle = (float) (Math.PI * cirAngle / 180.0);
             if (cirAngle < 90)
             {
@@ -364,6 +355,6 @@ public class ProcessBar extends View {
         return flagLock;
     }
     public void setflagLock(boolean flagLock){
-        this.flagLock = flagLock;
+        ProcessBar.flagLock = flagLock;
     }
 }

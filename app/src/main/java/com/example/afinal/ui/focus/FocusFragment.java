@@ -15,7 +15,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.BitmapFactory;
 import android.os.Build;
@@ -25,7 +24,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,7 +36,6 @@ import androidx.fragment.app.Fragment;
 import com.example.afinal.R;
 import com.example.afinal.db.DBContract;
 import com.example.afinal.db.DBHelper;
-import com.example.afinal.db.DBUser;
 import com.example.afinal.service.notificationBroadcastReceiver;
 import com.example.afinal.utility.DateFormatUtils;
 
@@ -53,7 +50,6 @@ public class FocusFragment extends Fragment {
     private SQLiteDatabase database;
 
     private ImageView mBase;
-    private ImageView mTree;
 
 
     private androidx.appcompat.widget.AppCompatButton mStartButton;
@@ -131,7 +127,6 @@ public class FocusFragment extends Fragment {
         mCancelButton = view.findViewById(R.id.cancelButton);
 
         mBase = view.findViewById(R.id.base);
-        //mTree = view.findViewById(R.id.tree);
         mTimeText = view.findViewById(R.id.timeText);
 
         flagLock = mProcessBar.getflagLock();
@@ -172,11 +167,6 @@ public class FocusFragment extends Fragment {
                 mChooseDialog.dismiss();
                 update(choose, progress);
             });
-            mChooseDialog.setWukongClickListener(() -> {
-                choose = "wukong";
-                mChooseDialog.dismiss();
-                update(choose, progress);
-            });
             mChooseDialog.show();
         });
         mProcessBar.setProgressCallback(_progress -> {
@@ -192,7 +182,7 @@ public class FocusFragment extends Fragment {
             mCancelButton.setVisibility(View.VISIBLE);
             mStartButton.setVisibility(View.GONE);
             timerProgress = progress;
-            growProgress = progress-timerProgress;
+            growProgress = 0;
             long now = Calendar.getInstance().getTimeInMillis();
             sche = DateFormatUtils.longToStr(now,true);
             //progress is the second sum
@@ -233,12 +223,12 @@ public class FocusFragment extends Fragment {
             @Override
             public void onTick(long l) {
                 Log.d("progress:",timerProgress+"");
-                timerProgress --;       //倒计时--
-                growProgress ++;        //lock进度++
+                timerProgress --;
+                growProgress ++;
 
-                if(flagDanger)          //进入第三方应用
-                    timeLimit --;       //枯死倒计时
-                if(timeLimit == 0){     //枯死
+                if(flagDanger)
+                    timeLimit --;       //counting down
+                if(timeLimit == 0){
                     flagLock = false;
                     mProcessBar.setflagLock(false);
                     mProcessBar.invalidate();
@@ -277,7 +267,7 @@ public class FocusFragment extends Fragment {
 
             @SuppressLint("SetTextI18n")
             @Override
-            //完成种植
+            //complete
             public void onFinish() {
                 mBase.setClickable(true);
                 m_HintText.setText("Start your plan of the day！");
@@ -353,7 +343,7 @@ public class FocusFragment extends Fragment {
     }
     @SuppressLint("SetTextI18n")
     private void update(String name, int progress){
-        int minute = progress/60;
+        int minute;
 
         if(!flagLock){
             minute = progress/60;
@@ -391,6 +381,7 @@ public class FocusFragment extends Fragment {
                 .build();
         manager.notify(1,notification);
     }
+    // sava data to database
     private Boolean saveNoteToDatabase(String title, String scheduled, String time, String state){
 
         if(database==null){
