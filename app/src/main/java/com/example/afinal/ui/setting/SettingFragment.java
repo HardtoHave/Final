@@ -26,7 +26,6 @@ import com.example.afinal.activity.MainActivity;
 import com.example.afinal.db.TimeyDbHelper;
 
 
-
 public class SettingFragment extends Fragment {
     Button okay_text, cancel_text,okay_text2, cancel_text2;
     @Override

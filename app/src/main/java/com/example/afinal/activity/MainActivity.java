@@ -1,11 +1,14 @@
 package com.example.afinal.activity;
 
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.Menu;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -14,11 +17,12 @@ import androidx.navigation.ui.NavigationUI;
 import com.example.afinal.R;
 import com.example.afinal.databinding.ActivityMainBinding;
 import com.example.afinal.ui.focus.FocusFragment;
+import com.example.afinal.ui.store.StoreFragment;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.Objects;
 
-public class MainActivity extends AppCompatActivity implements FocusFragment.PassDataInterface{
+public class MainActivity extends AppCompatActivity implements FocusFragment.PassDataInterface,StoreFragment.PassThemeInterface {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
@@ -28,7 +32,6 @@ public class MainActivity extends AppCompatActivity implements FocusFragment.Pas
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             account = extras.getString("phoneNumber");
@@ -54,6 +57,7 @@ public class MainActivity extends AppCompatActivity implements FocusFragment.Pas
         bundle.putString("account", account);
     }
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -75,5 +79,26 @@ public class MainActivity extends AppCompatActivity implements FocusFragment.Pas
 
     public String getAccount(){
         return account;
+    }
+
+    @Override
+    public void PassThemeData(String data) {
+//        FragmentManager fragmentManager=getSupportFragmentManager();
+//        FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+//        FocusFragment fFragment=new FocusFragment();
+        switch (data) {
+            case "mario":
+                setTheme(R.style.Theme_ChangeMario);
+                break;
+            case "kabi":
+                setTheme(R.style.Theme_ChangeKabi);
+                break;
+            case "koala":
+                setTheme(R.style.Theme_ChangeKoala);
+                break;
+            case "wukong":
+                setTheme(R.style.Theme_ChangeWukong);
+                break;
+        }
     }
 }

@@ -25,6 +25,19 @@ public class StoreFragment extends Fragment {
 
     private Button mario, kabi, koala, wukong;
     private int m_coinNum;
+    public static PassThemeInterface passThemeInterface;
+    public interface PassThemeInterface {
+        void PassThemeData(String data);
+    }
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        try {
+            passThemeInterface = (PassThemeInterface) getActivity();
+        } catch (ClassCastException e) {
+            throw new ClassCastException(context + " must implement onSomeEventListener");
+        }
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState){
@@ -52,7 +65,7 @@ public class StoreFragment extends Fragment {
                 ContentValues values=new ContentValues();
                 values.put("decoration","mario");
                 values.put("isEquip",true);
-                //db.insert("theme",null,values);
+                passThemeInterface.PassThemeData("mario");
                 Toast.makeText(requireActivity(), "charge success ٩( 'ω' )و ", Toast.LENGTH_SHORT).show();
             }else {
                 Toast.makeText(requireActivity(), "Your coins not enough (○ﾟεﾟ○)", Toast.LENGTH_SHORT).show();
@@ -69,6 +82,7 @@ public class StoreFragment extends Fragment {
                 values.put("decoration","kabi");
                 values.put("isEquip",true);
                 //db.insert("theme",null,values);
+                passThemeInterface.PassThemeData("kabi");
                 Toast.makeText(requireActivity(), "charge success ٩( 'ω' )و ", Toast.LENGTH_SHORT).show();
             }else {
                 Toast.makeText(requireActivity(), "Your coins not enough (○ﾟεﾟ○)", Toast.LENGTH_SHORT).show();
@@ -85,6 +99,7 @@ public class StoreFragment extends Fragment {
                 values.put("decoration","koala");
                 values.put("isEquip",true);
                 //db.insert("theme",null,values);
+                passThemeInterface.PassThemeData("koala");
                 Toast.makeText(requireActivity(), "charge success ٩( 'ω' )و ", Toast.LENGTH_SHORT).show();
             }else {
                 Toast.makeText(requireActivity(), "Your coins not enough (○ﾟεﾟ○)", Toast.LENGTH_SHORT).show();
@@ -101,6 +116,7 @@ public class StoreFragment extends Fragment {
                 values.put("decoration","wukong");
                 values.put("isEquip",true);
                 //db.insert("theme",null,values);
+                passThemeInterface.PassThemeData("wukong");
                 Toast.makeText(requireActivity(), "charge success ٩( 'ω' )و ", Toast.LENGTH_SHORT).show();
             }else {
                 Toast.makeText(requireActivity(), "Your coins not enough (○ﾟεﾟ○)", Toast.LENGTH_SHORT).show();
