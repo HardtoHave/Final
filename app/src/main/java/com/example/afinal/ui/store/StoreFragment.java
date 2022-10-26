@@ -56,8 +56,8 @@ public class StoreFragment extends Fragment {
         m_coinNum = preferences.getInt("coinSum",0);
 
         mario.setOnClickListener(v -> {
-            if(mario.getText().equals("$2000")&&m_coinNum-10>=0){
-                m_coinNum-=10;
+            if(mario.getText().equals("$2000")&&m_coinNum-2000>=0){
+                m_coinNum-=2000;
                 editor.putInt("coinSum",m_coinNum);
                 editor.apply();
                 mario.setText(R.string.equip);
