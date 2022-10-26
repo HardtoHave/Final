@@ -1,11 +1,14 @@
 package com.example.afinal.activity;
 
+import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.Menu;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -89,6 +92,8 @@ public class MainActivity extends AppCompatActivity implements FocusFragment.Pas
         switch (data) {
             case "mario":
                 setTheme(R.style.Theme_ChangeMario);
+//                androidx.appcompat.widget.Toolbar toolbar=findViewById(R.id.toolbar);
+//                toolbar.setBackground(ResourcesCompat.getDrawable(getResources(),R.color.red,null));
                 break;
             case "kabi":
                 setTheme(R.style.Theme_ChangeKabi);
